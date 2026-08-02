@@ -1,0 +1,11 @@
+<svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ribbon -->
+  <path d="M30 10 L45 40 L35 45 L15 20 Z" fill="#ff6a00"></path>
+  <path d="M70 10 L55 40 L65 45 L85 20 Z" fill="#ff6a00"></path>
+
+  <!-- Medal -->
+  <circle cx="50" cy="55" r="22" fill="#ff6a00"></circle>
+
+  <!-- Star -->
+  <polygon points="50,45 53,52 61,52 55,57 57,65 50,60 43,65 45,57 39,52 47,52" fill="#222"></polygon>
+</svg>

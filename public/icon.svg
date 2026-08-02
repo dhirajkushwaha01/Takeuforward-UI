@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <!-- Left Arrow -->
+  <path d="M10 24L5 29L10 34" stroke="#E5E5E5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <!-- Right Arrow -->
+  <path d="M54 24L59 29L54 34" stroke="#E5E5E5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <!-- Head -->
+  <circle cx="32" cy="18" r="9" fill="#5A5A5A"></circle>
+
+  <!-- Body -->
+  <path d="M18 42C18 33 24 28 32 28C40 28 46 33 46 42V45H18V42Z" fill="#5A5A5A"></path>
+
+  <!-- Laptop -->
+  <path d="M24 40H40L44 52H20L24 40Z" fill="#F3F4F6" stroke="#F3F4F6" stroke-width="1"></path>
+</svg>
