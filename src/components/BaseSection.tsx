@@ -16,7 +16,7 @@ function BaseSection() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
-        <div className="max-w-6xl mx-auto py-20 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto py-20 px-4 sm:px-0">
 
             <span className="text-4xl sm:text-5xl font-bold">
                 Frequently Asked <br />
