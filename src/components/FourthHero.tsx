@@ -1,9 +1,8 @@
 function FourthHero() {
     return (
-        <div className="mt-10 max-w-6xl mx-auto flex flex-wrap gap-6 items-stretch justify-between">
+        <div className="mt-10 max-w-6xl mx-auto flex flex-wrap gap-6 items-stretch justify-between px-4 sm:px-0">
 
-            {/* First Card */}
-            <div className="border border-gray-600 p-5 flex flex-col w-[48%]">
+            <div className="border border-gray-600 p-5 flex flex-col w-full md:w-[48%]">
 
                 <p className="font-semibold text-lg">
                     COMPANY-SPECIFIC INTERVIEW PREP
@@ -11,12 +10,12 @@ function FourthHero() {
 
                 <p className="mt-1 text-gray-400">
                     Target your dream job with practice sets curated for companies
-                    <br /> like Google, Amazon, Microsoft, and more.
+                    <br className="hidden sm:block" /> like Google, Amazon, Microsoft, and more.
                 </p>
 
                 <p className="mt-5 text-gray-400">
                     Train with their most frequently asked questions to build
-                    <br /> confidence and precision.
+                    <br className="hidden sm:block" /> confidence and precision.
                 </p>
 
                 <video
@@ -32,8 +31,7 @@ function FourthHero() {
 
             </div>
 
-            {/* Second Card */}
-            <div className="border border-gray-600 p-5 flex flex-col w-[48%]">
+            <div className="border border-gray-600 p-5 flex flex-col w-full md:w-[48%]">
 
                 <p className="font-semibold text-lg">
                     PERSONALIZED ROADMAPS
@@ -41,12 +39,12 @@ function FourthHero() {
 
                 <p className="mt-1 text-gray-400">
                     Create a custom learning path based on your schedule and
-                    <br /> skill level.
+                    <br className="hidden sm:block" /> skill level.
                 </p>
 
                 <p className="mt-5 text-gray-400">
                     Whether you have 2 months or 12, get a clear step-by-step
-                    <br /> roadmap that keeps you focused.
+                    <br className="hidden sm:block" /> roadmap that keeps you focused.
                 </p>
 
                 <video
@@ -62,8 +60,7 @@ function FourthHero() {
 
             </div>
 
-            {/* Third Card */}
-            <div className="border border-gray-600 p-5 flex flex-col w-[48%]">
+            <div className="border border-gray-600 p-5 flex flex-col w-full md:w-[48%]">
 
                 <p className="font-semibold text-lg">
                     Master DSA, System Design, and Core CS
@@ -72,8 +69,6 @@ function FourthHero() {
                 <p className="mt-1 text-gray-400">
                     Build a rock-solid foundation with 1000+ DSA problems, 100+ system design challenges, and complete coverage of DBMS, OS, and CN to ace every coding interview.
                 </p>
-
-
 
                 <video
                     autoPlay
@@ -88,8 +83,7 @@ function FourthHero() {
 
             </div>
 
-            {/* Fourth Card */}
-            <div className="border border-gray-600 p-5 flex flex-col w-[48%]">
+            <div className="border border-gray-600 p-5 flex flex-col w-full md:w-[48%]">
 
                 <p className="font-semibold text-lg">
                     Ace Interviews with Shared Experiences
@@ -98,7 +92,6 @@ function FourthHero() {
                 <p className="mt-1 text-gray-400">
                     Read verified stories from real candidates. Learn what to expect in interviews, common questions, and proven strategies to perform your best.
                 </p>
-
 
                 <video
                     autoPlay
@@ -112,10 +105,8 @@ function FourthHero() {
                 </video>
 
             </div>
-              
-        </div> 
 
-        
+        </div>
     );
 }
 

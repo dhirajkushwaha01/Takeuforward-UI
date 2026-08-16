@@ -1,11 +1,10 @@
 "use client";
-import React from "react";
+
 import { faqData } from "@/utils/faqData";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-function BaseSection() { 
-
+function BaseSection() {
     type Category = keyof typeof faqData;
 
     const categories = Object.keys(faqData) as Category[];
@@ -13,28 +12,29 @@ function BaseSection() {
     const [activeCategory, setActiveCategory] = useState<Category>(
         categories[0]
     );
+
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
-        <div className="max-w-6xl mx-auto py-20">
-            <span className="text-5xl font-bold">
+        <div className="max-w-6xl mx-auto py-20 px-4 sm:px-6">
+
+            <span className="text-4xl sm:text-5xl font-bold">
                 Frequently Asked <br />
                 Questions
             </span>
 
-            <div className="mt-14 grid grid-cols-[300px_1fr] gap-20">
+            <div className="mt-14 md:grid md:grid-cols-[300px_1fr] md:gap-20">
 
-                {/* Left Side */}
-                <div className="space-y-2">
+               
+                <div className="mb-8 flex gap-3 overflow-x-auto scrollbar-none pb-2 md:mb-0 md:block md:space-y-2 md:overflow-visible md:pb-0">
                     {categories.map((category) => (
                         <button
                             key={category}
                             onClick={() => {
                                 setActiveCategory(category);
-                                setOpenIndex(null); // Category change hone par first FAQ open hoga
+                                setOpenIndex(null);
                             }}
-                            className={`w-full rounded-full border px-5 py-3 text-left transition
-                            ${activeCategory === category
+                            className={`shrink-0 rounded-full border px-5 py-3 text-left transition md:w-full ${activeCategory === category
                                     ? "bg-zinc-700 border-zinc-600"
                                     : "border-zinc-800 hover:border-zinc-600"
                                 }`}
@@ -44,8 +44,8 @@ function BaseSection() {
                     ))}
                 </div>
 
-                {/* Right Side */}
                 <div className="border border-zinc-800 rounded-2xl overflow-hidden">
+
                     {faqData[activeCategory].map((item, index) => (
                         <div
                             key={index}
@@ -53,28 +53,34 @@ function BaseSection() {
                         >
                             <button
                                 onClick={() =>
-                                    setOpenIndex(openIndex === index ? null : index)
+                                    setOpenIndex(
+                                        openIndex === index ? null : index
+                                    )
                                 }
-                                className="w-full flex items-center justify-between px-8 py-6 text-left"
+                                className="w-full flex items-center justify-between gap-4 px-5 py-5 md:px-8 md:py-6 text-left"
                             >
                                 <span className="font-semibold text-white">
                                     {item.question}
                                 </span>
 
                                 <ChevronDown
-                                    className={`h-5 w-5 transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""
+                                    className={`h-5 w-5 shrink-0 transition-transform duration-300 ${openIndex === index
+                                        ? "rotate-180"
+                                        : ""
                                         }`}
                                 />
                             </button>
 
                             {openIndex === index && (
-                                <div className="px-8 pb-6 text-gray-400 leading-7">
+                                <div className="px-5 pb-5 md:px-8 md:pb-6 text-gray-400 leading-7">
                                     {item.answer}
                                 </div>
                             )}
                         </div>
                     ))}
+
                 </div>
+
             </div>
         </div>
     );

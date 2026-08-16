@@ -6,14 +6,14 @@ function InfiniteCard() {
             <InfiniteMovingCards
                 items={testimonials}
                 direction="right"
-                speed="slow"
+                speed="fast"
                 className=" mt-10"
             />
 
             <InfiniteMovingCards
                 items={testimonials2}
                 direction="left"
-                speed="slow"
+                speed="fast"
                
             />
 
