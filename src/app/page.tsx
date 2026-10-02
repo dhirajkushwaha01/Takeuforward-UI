@@ -11,7 +11,8 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black/[0.96] antialiased bg-grid-white/[0.02]">
+    <main className="min-h-screen bg-white dark:bg-[#0a0a0a] text-zinc-900 dark:text-zinc-100 antialiased transition-colors duration-300 relative overflow-x-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-amber-500/15 via-orange-500/5 to-transparent blur-3xl -z-10 pointer-events-none" />
       <Hero />
       <SecondHero />
       <ThirdHero />
@@ -23,7 +24,5 @@ export default function Home() {
       <BaseSection />
       <Footer />
     </main>
-
   );
-
 }

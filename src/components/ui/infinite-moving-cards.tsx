@@ -14,6 +14,7 @@ export const InfiniteMovingCards = ({
     quote: string;
     name: string;
     title: string;
+    company?: string;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -22,24 +23,24 @@ export const InfiniteMovingCards = ({
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
+  const [start, setStart] = useState(false);
 
   useEffect(() => {
     addAnimation();
   }, []);
 
-  const [start, setStart] = useState(false);
-
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children);
+      if (scrollerRef.current.children.length === items.length) {
+        const scrollerContent = Array.from(scrollerRef.current.children);
 
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem);
-        }
-      });
+        scrollerContent.forEach((item) => {
+          const duplicatedItem = item.cloneNode(true);
+          if (scrollerRef.current) {
+            scrollerRef.current.appendChild(duplicatedItem);
+          }
+        });
+      }
 
       getDirection();
       getSpeed();
@@ -68,17 +69,17 @@ export const InfiniteMovingCards = ({
       if (speed === "fast") {
         containerRef.current.style.setProperty(
           "--animation-duration",
-          "120s"
+          "40s"
         );
       } else if (speed === "normal") {
         containerRef.current.style.setProperty(
           "--animation-duration",
-          "140s"
+          "60s"
         );
       } else {
         containerRef.current.style.setProperty(
           "--animation-duration",
-          "160s"
+          "80s"
         );
       }
     }
@@ -88,7 +89,7 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 w-full max-w-3xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)] md:max-w-7xl",
+        "scroller relative z-20 w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]",
         className
       )}
     >
@@ -102,29 +103,28 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="relative w-[280px] shrink-0 rounded-2xl border border-b-0 border-zinc-200 bg-[linear-gradient(180deg,#fafafa,#f5f5f5)] px-4 py-3 sm:w-[350px] sm:px-8 sm:py-6 md:w-[450px] dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)]"
+            className="relative w-[280px] shrink-0 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 p-5 sm:w-[350px] sm:p-6 md:w-[420px] shadow-sm hover:border-amber-500/50 transition-colors"
             key={`${item.name}-${idx}`}
           >
             <blockquote>
-              <div
-                aria-hidden="true"
-                className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              ></div>
-
-              <span className="relative z-20 text-sm leading-[1.6] font-normal text-neutral-800 dark:text-gray-100">
-                {item.quote}
+              <span className="relative z-20 text-xs sm:text-sm leading-relaxed font-normal text-zinc-700 dark:text-zinc-300">
+                &ldquo;{item.quote}&rdquo;
               </span>
 
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
+              <div className="relative z-20 mt-4 flex items-center justify-between border-t border-zinc-100 dark:border-zinc-800/80 pt-3">
+                <span className="flex flex-col">
+                  <span className="text-sm font-semibold text-zinc-900 dark:text-white">
                     {item.name}
                   </span>
-
-                  <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
+                  <span className="text-xs text-zinc-500 dark:text-zinc-400">
                     {item.title}
                   </span>
                 </span>
+                {item.company && (
+                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                    {item.company}
+                  </span>
+                )}
               </div>
             </blockquote>
           </li>

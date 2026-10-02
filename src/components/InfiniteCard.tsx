@@ -2,7 +2,7 @@ import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 
 function InfiniteCard() {
     return (
-        <div className="max-w-6xl mx-auto">
+        <div className="w-[calc(100%-1rem)] sm:w-[calc(100%-2rem)] md:w-[calc(100%-3rem)] lg:max-w-6xl mx-auto space-y-4">
             <InfiniteMovingCards
                 items={testimonials}
                 direction="right"

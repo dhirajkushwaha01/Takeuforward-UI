@@ -5,90 +5,97 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <div
-            className='max-w-6xl mx-auto'
-        >
+        <footer className="w-full border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
+            <div className="w-[calc(100%-1rem)] sm:w-[calc(100%-2rem)] md:w-[calc(100%-3rem)] lg:max-w-6xl mx-auto py-12">
 
-            <footer className="w-full border-t border-zinc-800 bg-black">
-                <div className="max-w-7xl mx-auto px-6 py-8">
+                {/* Top Row */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6">
 
-                    {/* Top Row */}
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-
-                        {/* Logo */}
-                        <Link href="/" className="flex items-center gap-2">
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center gap-2">
+                        <div className="px-3.5 py-1.5 rounded-xl bg-zinc-950 border border-zinc-800 shadow-sm">
                             <Image
                                 src="/SecondaryLogoWO.png"
                                 alt="TakeUforward"
-                                width={150}
-                                height={40}
+                                width={135}
+                                height={26}
                                 className="object-contain"
                             />
-                        </Link>
-
-                        {/* Links */}
-                        <div className="flex flex-wrap items-center justify-center text-sm text-gray-400">
-                            {[
-                                "About",
-                                "Contact us",
-                                "Pricing",
-                                "Privacy Policy",
-                                "Terms and Conditions",
-                                "Cancellation and Refund Policy",
-                            ].map((item, index) => (
-                                <React.Fragment key={item}>
-                                    <Link
-                                        href="/"
-                                        className="hover:text-white transition"
-                                    >
-                                        {item}
-                                    </Link>
-
-                                    {index !== 5 && (
-                                        <span className="mx-3 text-zinc-600">|</span>
-                                    )}
-                                </React.Fragment>
-                            ))}
                         </div>
+                    </Link>
 
-                        {/* Social Icons */}
-                        <div className="flex items-center gap-3">
+                    {/* Links */}
+                    <div className="flex flex-wrap items-center justify-center gap-y-2 text-sm text-zinc-600 dark:text-zinc-400">
+                        {[
+                            { name: "About", href: "/" },
+                            { name: "Plus Dashboard", href: "/plus" },
+                            { name: "Pricing", href: "/pricing" },
+                            { name: "Privacy Policy", href: "/" },
+                            { name: "Terms & Conditions", href: "/" },
+                        ].map((item, index) => (
+                            <React.Fragment key={item.name}>
+                                <Link
+                                    href={item.href}
+                                    className="hover:text-amber-500 transition-colors duration-200 px-2"
+                                >
+                                    {item.name}
+                                </Link>
 
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABsFBMVEVHcEx6Gft+F/x0FPyBDPORB+WnAt69AN/IANzSANrVANDpEKtpGv52FvjhANfhAMnbBLfVBJGHGP2YF/ueAu+zAPDrALTtA6quMNrKWuPhYtzvVMHvILzuAMbMf+z+3/3/////9//vd9v5AbryAqWuGvrxr9371vf2tePwp9/vnuD/+//+ArP9AJ395vrTRNPucMLwAo7HG/fxFM39wPHtPZ38AoXjGfD6E7TsJ6rzI5PzV6P7AXX9FpDtocvxZJ79AGTwrb39EGf8InX87PPxHGv+E3j8H1vugJX7KlLxZJH1u8v7M1X2Kz78M0XwbF79Kmbyu6/9OTD9QUPwWGf//vPrQlr0NGj7AFn0imzySCL7Szb4yb/7QiT8UBL+Wi3+7Nn1BEbzz6b5Ww79ZiL0dUf11bD8eyj6aAH+dg/+bh3zFUX93OjymjH9ign8hQT5hRj8fQ32t2f/+djypEz5kAL22539dwf+mQL5ogD3zmHzn4r4Go77Yyv/qgT+sAL5rwD5vzL1yVr6mAf9tgD9vQD/xAD/KnD2lwD8ygD+OGP/LGv+rQ3+uQj/ywL7VDI4+UxjAAAAkHRSTlMAXMb/////////xl0Kz///zgv//////8r//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8X/////xl3//////8/////OC//PClzG/8UUwjnzAAACFUlEQVR4ATXQRbobRxhG4fO16q8moZmZPQkz0wayg3CygHBGnmYjwTV4FpqamRl1o3u7pWqVoR+fYb3FAiQBQiDaAaQJiK4WW6JFARiS7joe2qBdPRbCAAR4IY0AabxMiMdJC32gZuLavYqylVaHnf97pEjLYdndZVNSqXWC3CSfZVpCO+FenvR1ru9py6tq2XjYgEt6vd5Y6OyOVeSPIr87jGl515GbM9gTwrmd1zfk1coLbKqqtbfWhpDkARLg5kSpbbjVc9fMriVcXXHVYhR4F2DVvXnfWHVZscDGcVWzjDUX8JBcv25Aj3hH2bIs63gtAeAczm3qULFeGtc79Hg8W1gW/GMmyX2xBsyvjGnTeO/LKsrTlvg8AbwZ2MNnQbuoRUscDM3s+XoQ0rSXb9IGvwbKNeAcdCFTTE7tL8edcnZ4v6DTrizLEnDOFt46fCeJtw/vKO9bTouNBCMzW2kfjA4fHr22rDJPQQEhcWb95+f2qPnw5ZeHsTFTsVWdawF9bFBN1khiiQ7TGaGKydG3J+fdPX0hMv35oQTUSmrqWZiMDu7ZfkL39FU69+jX58tVwC0ANz3I0yHM45K+qXxHqL7wH096vlx/YbF2Cy/rp/sFXkKqIIN7JPfnVNVD/FscmHgvQBCJoY6LnXo6C1X96ncOK2fQfkqDXIwsRj+DN4SAn1U5wGDWxDidNqGe7r9zAB4A0j29NbySqvYAAAAASUVORK5CYII=" alt="instagram" 
-                            
-                            className='h-5 w-5'
-
-                            />
-
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAAAAABXZoBIAAAA/0lEQVR4AbXPIazCMACE4d+L2qoZFEGSIGcRc/gJJB5XMzGJmK9EN0HMi+qaibkKVF1txdQe4g0YzPK5yyWXHL9TaPNQ89LojH87N1rbJcXkMF4Fk31UMrf34hm14KUeoQxGArALHTMuQD2cAWQfJXOpgTbksGr9ng8qluShJTPhyCdx63POg7rEim95ZyR68I1ggQpnCEGwyPicw6hZtPEGmnhkycqOio1zm6XuFtyw5XDXfGvuau0dXHzJp8pfBPuhIXO9ZK5ILUCdSvLYMpc6ASBtl3EaC97I4KaFaOCaBE9Zn5jUsVqR2vcTJZO1DdbGoZryVp94Ka/mQfE7f2T3df0WBhLDAAAAAElFTkSuQmCC" alt="twitter"
-                            className='h-5 w-5'
-                            />
-
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABDUlEQVR4AWP4////gOLB44D6nTcsGIo33QHi/zTGd0B2YTiAPpYjHIHNAf/piQk6wGPW8f/rLz8HYRCbXg5AWI4GQGJ0cwDY12gAJDbcHUA4CkZAIqQUK7Ts/m/SfxBMs5RupswBaACr+P47b/5zlG/5DyzZ/r/+8hNF7vuvP//nn3r0X6JhJ+0ccPrR+/+H7735jw9cf/n5v0D1Nuo5gBxQve06zR0AjoL7b7/+//zjN4bc+ScfaOeA33///k9Yfg4mDw7u/Xdeo6uhnQP6D93FMNxlxjF0ZbRzgMXEQ9iyI90cALIMJoccDXRzAK6CZog6YNQBow6gIx54Bwx4x2RAu2bAysoEZu9o7xgAQrvkxt3WZi0AAAAASUVORK5CYII=" alt="linkdin"
-                            className='h-5 w-5'
-                            /> 
-
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABJklEQVR4Ae2WpVaFQRSFcaeS4QVwIjTiLbgk7D1w9xeg4FQcOu6acHeXtNnDmsFd7in/WetLI+f7dbYDAFEsAUvgoeAQ5k5iSQFpIH1kkMyQFXJMTsgpwTuc6jlHes2M3qNP71mge7g76DLNg8gygZ1QckGmuSdZJ7Azq8RDCSQTCJGgBCoFBWqVQLegQJcSmPnWIr9oICMXcIr4C4FJJbD9rUX+NtzX+CIQlfVbgS0lcP4jAVNt/UCA7acCZ0oAPxfQdXMLFNUBvpHflvgbAVM7h0B6zrfeD3kB+Ucg/xLKf4biPyLJX3GH9GFUogRSBQUSTSBZEwskQpFs1USyl6E0gRSRJtJPhsnci1B69oVQeqzXzOo9+kmj3juBeDw2BkSxBCyBO+9s03HRLVCoAAAAAElFTkSuQmCC"
-                                alt="youtube"
-                                className='h-5 w-5'
-
-                            />
-
-
-                        </div>
+                                {index !== 4 && (
+                                    <span className="text-zinc-300 dark:text-zinc-700 select-none">•</span>
+                                )}
+                            </React.Fragment>
+                        ))}
                     </div>
 
-                    {/* Copyright */}
-                    <div className="mt-6 text-center">
-                        <p className="text-sm italic text-gray-500">
-                            Copyright © 2026 Moveforward Private Limited | All rights reserved
-                        </p>
-                    </div>
+                    {/* Social Icons */}
+                    <div className="flex items-center gap-3">
+                        <a
+                            href="https://youtube.com/@takeuforward"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:text-red-500 hover:border-red-500/50 transition-all duration-200 shadow-sm"
+                            aria-label="YouTube"
+                        >
+                            <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
 
+                        <a
+                            href="https://linkedin.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:text-blue-500 hover:border-blue-500/50 transition-all duration-200 shadow-sm"
+                            aria-label="LinkedIn"
+                        >
+                            <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+
+                        <a
+                            href="https://twitter.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:text-amber-500 hover:border-amber-500/50 transition-all duration-200 shadow-sm"
+                            aria-label="Twitter / X"
+                        >
+                            <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-            </footer>
 
+                {/* Copyright */}
+                <div className="mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-800/60 text-center">
+                    <p className="text-xs sm:text-sm text-zinc-500">
+                        Copyright © 2026 Moveforward Private Limited | All rights reserved
+                    </p>
+                </div>
 
-        </div>
-    )
+            </div>
+        </footer>
+    );
 }
